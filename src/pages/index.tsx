@@ -7,6 +7,7 @@ import {
   PrimaryButton,
   ThemeProvider,
 } from "@fluentui/react";
+import Button from "../react-ui/button";
 
 const dropdownStyles: Partial<IDropdownStyles> = {
   dropdown: { width: 300 },
@@ -50,6 +51,7 @@ const Home: NextPage = () => {
           options={options}
           styles={dropdownStyles}
         />
+        <Button />
       </ThemeProvider>
     </div>
   );
