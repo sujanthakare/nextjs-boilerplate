@@ -7,6 +7,14 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-contexts/register",
     "@storybook/addon-a11y",
+    {
+      name: "@storybook/addon-postcss",
+      options: {
+        postcssLoaderOptions: {
+          implementation: require("postcss"),
+        },
+      },
+    },
   ],
   framework: "@storybook/react",
   webpackFinal: (config) => {
