@@ -1,13 +1,8 @@
 import React from "react";
 import { css, Global } from "@emotion/react";
 
-import {
-  fontFamily,
-  fontSource,
-  fontSize,
-  mediaQuery,
-  lineHeight,
-} from "./configs";
+import { fontFamily, fontSource, fontSize, lineHeight } from "./theme/fonts";
+import { deviceQuery } from "./theme/mediaQuery";
 
 const GlobalStyles = () => {
   const FONT_FACES = Object.keys(fontFamily).map((key) => {
@@ -56,7 +51,7 @@ const GlobalStyles = () => {
     "input, textarea, select": css({
       fontSize: fontSize.DEFAULT,
       // fontSize need to be > 16px on mobile, else iOS will zoom on input focus
-      [mediaQuery.PHONE]: { fontSize: fontSize.NO_INPUT_ZOOM_MOBILE },
+      [deviceQuery.PHONE]: { fontSize: fontSize.NO_INPUT_ZOOM_MOBILE },
     }),
 
     "*:focus": css({
@@ -67,9 +62,9 @@ const GlobalStyles = () => {
 
   const TYPOGRAPHY = {
     html: css({
-      [mediaQuery.PHONE]: { fontSize: "50%" },
-      [mediaQuery.TAB]: { fontSize: "60%" },
-      [mediaQuery.DESKTOP]: { fontSize: "62.5%" },
+      [deviceQuery.PHONE]: { fontSize: "50%" },
+      [deviceQuery.TAB]: { fontSize: "60%" },
+      [deviceQuery.DESKTOP]: { fontSize: "62.5%" },
     }),
 
     "h1, h2, h3, h4, h5, h6": css({

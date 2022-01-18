@@ -1,20 +1,31 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentMeta } from "@storybook/react";
 
-import Button from ".";
+import Button from "./button";
 
 export default {
   title: "Example/Button",
   component: Button,
   argTypes: {
-    backgroundColor: { control: "color" },
+    text: { type: "string" },
   },
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+export const Variants = () => {
+  return (
+    <div
+      css={{
+        flex: 1,
+        display: "flex",
+        flexDirection: "row",
+        "> button": {
+          margin: 10,
+        },
+      }}
+    >
+      <Button text="Standard" />
 
-export const Primary = Template.bind({});
-
-Primary.args = {
-  children: "Primary",
+      <Button text="Primary" variant="primary" />
+    </div>
+  );
 };
