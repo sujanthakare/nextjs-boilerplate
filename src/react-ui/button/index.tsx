@@ -1,16 +1,12 @@
 import React from "react";
+import { baseButtonStyle, buildVariantStyle } from "./styles";
 
-const Button = () => {
+const Button: React.FC = ({ children }) => {
+  const variantStyle = buildVariantStyle("primary");
+
   return (
-    <button
-      css={{
-        backgroundColor: "blue",
-      }}
-      onClick={() => {
-        alert("yo");
-      }}
-    >
-      WATCBH THIS
+    <button css={[baseButtonStyle, variantStyle]} onClick={() => {}}>
+      {children}
     </button>
   );
 };

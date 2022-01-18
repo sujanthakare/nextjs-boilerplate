@@ -8,6 +8,7 @@ module.exports = {
     "@storybook/addon-contexts/register",
     "@storybook/addon-a11y",
   ],
+  staticDirs: ["../public"],
   framework: "@storybook/react",
   webpackFinal: (config) => {
     if (config.resolve.plugins) {

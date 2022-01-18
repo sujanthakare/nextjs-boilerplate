@@ -1,3 +1,5 @@
+import PreviewWrapper from "./previewWrapper";
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -7,3 +9,11 @@ export const parameters = {
     },
   },
 };
+
+export const decorators = [
+  (Story) => (
+    <PreviewWrapper>
+      <Story />
+    </PreviewWrapper>
+  ),
+];
