@@ -12,10 +12,10 @@ const Home: NextPage = () => {
       }}
     >
       <div css={{ margin: 10 }}>
-        <Button>Primary</Button>
+        <Button text="Primary" variant="primary"></Button>
       </div>
       <div css={{ margin: 10 }}>
-        <Button>Standard</Button>
+        <Button text="Standard"></Button>
       </div>
     </div>
   );

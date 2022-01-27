@@ -11,5 +11,10 @@
     ],
     "@emotion/babel-preset-css-prop"
   ],
-  "plugins": ["@emotion/babel-plugin"]
+  "plugins": [
+    "@emotion/babel-plugin",
+    "babel-plugin-transform-typescript-metadata",
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    "babel-plugin-parameter-decorator"
+  ]
 }
