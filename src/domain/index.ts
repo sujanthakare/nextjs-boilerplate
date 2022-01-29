@@ -1,18 +1,19 @@
-import "reflect-metadata";
-import { IRouteHandler } from "./controllers/types";
-import { getController } from "./controllers/routes";
+import { NextApiRequest, NextApiResponse } from "next";
+import BaseApiController from "./BaseApiController";
 
-export const routeHandler: IRouteHandler = (handlerArgs) => {
-  const { controller, method, path, body, query } = handlerArgs;
+export const createHandler = (controller: BaseApiController) => {
+  return async function handler(
+    req: NextApiRequest,
+    res: NextApiResponse<any>
+  ) {
+    const { route } = req.query;
 
-  const routeController = getController(controller);
+    const result = await controller.handleRoute({
+      method: req.method || "GET",
+      apiRoutes: [...route],
+      body: req.body,
+    });
 
-  if (!routeController) {
-    return {
-      screen: "PAGE NOT FOUND",
-      controller,
-    };
-  }
-
-  return routeController.handleRoute({ method, path, body, query });
+    return res.status(result.status).json(result.data);
+  };
 };
