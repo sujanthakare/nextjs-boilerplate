@@ -1,6 +1,6 @@
-import BaseApiController from "../BaseApiController";
+import BaseApiController from "../base-api-controller";
 import { CONTROLLER } from "../decorators";
-import LoginController from "./LoginController";
+import LoginController from "./login-controller";
 
 export default class ViewController extends BaseApiController {
   apiRouteKey: string = "view";

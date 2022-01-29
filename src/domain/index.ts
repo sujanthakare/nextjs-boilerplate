@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import BaseApiController from "./BaseApiController";
+import BaseApiController from "./base-api-controller";
 
 export const createHandler = (controller: BaseApiController) => {
   return async function handler(

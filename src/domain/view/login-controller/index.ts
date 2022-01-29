@@ -1,4 +1,4 @@
-import BaseApiController from "@/domain/BaseApiController";
+import BaseApiController from "@/domain/base-api-controller";
 import { GET, POST } from "@/domain/decorators";
 
 export default class LoginController extends BaseApiController {
