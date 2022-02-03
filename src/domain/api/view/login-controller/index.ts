@@ -1,5 +1,5 @@
-import BaseApiController from "@/domain/base-api-controller";
-import { GET, POST } from "@/domain/decorators";
+import BaseApiController from "@/domain/api/base-api-controller";
+import { GET, POST } from "@/domain/api/decorators";
 
 export default class LoginController extends BaseApiController {
   apiRouteKey: string = "login";

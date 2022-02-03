@@ -1,4 +1,4 @@
-import { createHandler } from "@/domain";
-import ViewController from "@/domain/view/view-controller";
+import { createHandler } from "@/domain/api";
+import ViewController from "@/domain/api/view/view-controller";
 
 export default createHandler(new ViewController());
