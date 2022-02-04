@@ -1,6 +1,3 @@
-// import Button from "./button";
-// export default Button;
+import Button from "./button";
 
-import MButton from "@mui/material/Button";
-
-export default MButton;
+export default Button;

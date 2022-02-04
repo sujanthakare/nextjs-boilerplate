@@ -1,6 +1,9 @@
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = {
+  features: {
+    emotionAlias: false,
+  },
   stories: ["../src/react-ui/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "@storybook/addon-links",

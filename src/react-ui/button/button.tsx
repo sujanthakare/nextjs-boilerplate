@@ -1,26 +1,14 @@
 import React, { ButtonHTMLAttributes } from "react";
-import { baseButtonStyle, buildVariantStyle, Variant } from "./styles";
+import MuiButton from "@mui/material/Button";
+
+// import { baseButtonStyle, buildVariantStyle, Variant } from "./styles";
 
 export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  text: string;
-  variant?: Variant;
+  title: string;
 }
 
-const Button: React.FC<IButtonProps> = ({
-  children,
-  variant = "default",
-  text,
-  className,
-  ...rest
-}) => {
-  const variantStyle = buildVariantStyle(variant);
-
-  return (
-    <button css={[baseButtonStyle, variantStyle, className]} {...rest}>
-      {text}
-      {children}
-    </button>
-  );
+const Button: React.FC<IButtonProps> = ({ title }) => {
+  return <MuiButton variant="contained">{title}</MuiButton>;
 };
 
 export default Button;

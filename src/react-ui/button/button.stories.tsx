@@ -2,6 +2,7 @@ import React from "react";
 import { ComponentMeta } from "@storybook/react";
 
 import Button from "./button";
+import { ThemeContextProvider } from "../theme/themeContext";
 
 export default {
   title: "Example/Button",
@@ -23,9 +24,9 @@ export const Variants = () => {
         },
       }}
     >
-      <Button text="Standard" />
-
-      <Button text="Primary" variant="primary" />
+      <Button title="Standard" />
+      <Button title="Primary" />
+      <Button title="Another" />
     </div>
   );
 };

@@ -1,8 +1,8 @@
-import colorPalette, { ColorPalette } from "./colorPalette";
+import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 
-// SHOULD BE REMOVED
-// import { DefaultEffects } from "@fluentui/react";
+import colorPalette, { ColorPalette } from "./colorPalette";
 import { BoxShadows, RoundCorners, boxShadows, roundCorners } from "./effects";
+import { defaultFontFamilyName, fontSource } from "./fonts";
 
 export interface ITheme {
   colors: ColorPalette;
@@ -14,4 +14,56 @@ export const defaultTheme: ITheme = {
   colors: colorPalette,
   boxShadows,
   roundCorners,
+};
+
+const theme = createTheme({
+  typography: {
+    fontFamily: defaultFontFamilyName,
+    button: {
+      fontWeight: 600,
+      letterSpacing: 1,
+    },
+    fontSize: 10,
+  },
+
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+        @font-face {
+          font-family: '${defaultFontFamilyName}';
+          src: url(${fontSource.REGULAR}), url(${fontSource.BOLD}), url(${fontSource.ITALIC}), url(${fontSource.LIGHT}), url(${fontSource.MEDIUM});
+          font-display: swap;
+          unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
+        }
+      `,
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          minHeight: 36,
+        },
+      },
+    },
+  },
+  palette: {
+    primary: {
+      main: "#0078d4",
+      dark: "#005a9e",
+    },
+    secondary: {
+      main: "#f50057",
+    },
+  },
+  shape: {
+    borderRadius: 0,
+  },
+});
+
+export const ThemeContextProvider: React.FC = ({ children }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
+  );
 };

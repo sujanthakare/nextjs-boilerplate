@@ -1,13 +1,8 @@
-import React, { Fragment } from "react";
-import GlobalStyles from "../src/react-ui/globalStyles";
+import React from "react";
+import { ThemeContextProvider } from "../src/react-ui/theme/themeContext";
 
 const PreviewWrapper: React.FC = ({ children }) => {
-  return (
-    <Fragment>
-      <GlobalStyles />
-      {children}
-    </Fragment>
-  );
+  return <ThemeContextProvider>{children}</ThemeContextProvider>;
 };
 
 export default PreviewWrapper;

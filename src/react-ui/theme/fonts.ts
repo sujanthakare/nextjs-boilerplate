@@ -14,6 +14,8 @@ export const fontSource = {
   ITALIC: "/fonts/OpenSans-MediumItalic.ttf",
 };
 
+export const defaultFontFamilyName = "Open Sans";
+
 export const fontFamily = {
   REGULAR: "family_regular",
   MEDIUM: "family_medium",
