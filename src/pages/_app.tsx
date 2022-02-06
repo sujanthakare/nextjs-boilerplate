@@ -1,8 +1,5 @@
-import { ThemeContextProvider } from "@/react-ui/theme/themeContext";
+import { ThemeContextProvider } from "@/react-ui/theme";
 import type { AppProps } from "next/app";
-import Head from "next/head";
-import { Fragment } from "react";
-import GlobalStyles from "../react-ui/globalStyles";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

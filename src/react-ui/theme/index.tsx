@@ -2,7 +2,7 @@ import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 
 import colorPalette, { ColorPalette } from "./colorPalette";
 import { BoxShadows, RoundCorners, boxShadows, roundCorners } from "./effects";
-import { defaultFontFamilyName, fontSource } from "./fonts";
+import { defaultFontFamily, fontSource } from "./fonts";
 
 export interface ITheme {
   colors: ColorPalette;
@@ -18,7 +18,7 @@ export const defaultTheme: ITheme = {
 
 const theme = createTheme({
   typography: {
-    fontFamily: defaultFontFamilyName,
+    fontFamily: defaultFontFamily,
     button: {
       fontWeight: 600,
       letterSpacing: 1,
@@ -30,7 +30,7 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: `
         @font-face {
-          font-family: '${defaultFontFamilyName}';
+          font-family: '${defaultFontFamily}';
           src: url(${fontSource.REGULAR}), url(${fontSource.BOLD}), url(${fontSource.ITALIC}), url(${fontSource.LIGHT}), url(${fontSource.MEDIUM});
           font-display: swap;
           unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;

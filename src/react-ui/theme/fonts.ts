@@ -1,45 +1,12 @@
-export enum Font {
-  REGULAR = "REGULAR",
-  MEDIUM = "MEDIUM",
-  LIGHT = "LIGHT",
-  BOLD = "BOLD",
-  ITALIC = "ITALIC",
-}
+export const defaultFontFamily = "Open Sans";
 
+const fontFolder = "OpenSans";
 export const fontSource = {
-  REGULAR: "/fonts/OpenSans-Regular.ttf",
-  MEDIUM: "/fonts/OpenSans-Medium.ttf",
-  LIGHT: "/fonts/OpenSans-Light.ttf",
-  BOLD: "/fonts/OpenSans-Bold.ttf",
-  ITALIC: "/fonts/OpenSans-MediumItalic.ttf",
-};
-
-export const defaultFontFamilyName = "Open Sans";
-
-export const fontFamily = {
-  REGULAR: "family_regular",
-  MEDIUM: "family_medium",
-  LIGHT: "family_light",
-  BOLD: "family_bold",
-  ITALIC: "family_italic",
-};
-
-export const fontSize = {
-  P: "1.4rem",
-
-  DEFAULT: "1.4rem",
-  SMALL: "1.1rem",
-  LARGE: "2.1rem",
-
-  H1_EXTRA: "4.4rem",
-  H1: "3rem",
-  H2: "2.4rem",
-  H3: "2rem",
-  H4: "1.8rem",
-  H5: "1.6rem",
-  H6: "1.6rem",
-
-  NO_INPUT_ZOOM_MOBILE: "2rem",
+  REGULAR: `/fonts/${fontFolder}/Regular.ttf`,
+  MEDIUM: `/fonts/${fontFolder}/Medium.ttf`,
+  LIGHT: `/fonts/${fontFolder}/Light.ttf`,
+  BOLD: `/fonts/${fontFolder}/Bold.ttf`,
+  ITALIC: `/fonts/${fontFolder}/MediumItalic.ttf`,
 };
 
 export const fontWeight = {

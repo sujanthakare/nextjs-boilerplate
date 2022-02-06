@@ -5,18 +5,20 @@ import Button from "../react-ui/button";
 const Home: NextPage = () => {
   return (
     <div
-      style={{
+      css={{
         display: "flex",
         justifyContent: "center",
         margin: 10,
+        "> button": {
+          margin: 10,
+        },
       }}
     >
-      <div css={{ margin: 10 }}>
-        <Button title="Primary"></Button>
-      </div>
-      <div css={{ margin: 10 }}>
-        <Button title="Standard"></Button>
-      </div>
+      <Button title="Sign up" />
+      <Button title="Sign in" variant="outlined" />
+      <Button title="Forgot password" />
+      <Button title="Error" color="error" />
+      <Button title="Forgot password" />
     </div>
   );
 };
