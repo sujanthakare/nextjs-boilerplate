@@ -1,19 +1,52 @@
-import { FlexViewStyle } from "./flexStyles";
+import { FlexViewStyle } from "./flex-styles";
 
-export type IItem = unknown;
+export interface ISource {
+  serverConfig?: {
+    method: string;
+    url: string;
+  };
+}
+export interface IBaseView {
+  id: string;
+  type: ViewType;
+  viewStyle?: FlexViewStyle;
+}
 
 export enum ViewType {
-  SCREEN = "SCREEN",
+  FORM = "FORM",
+  SEARCH = "SEARCH",
 }
 
-export interface IView {
-  type: ViewType;
+interface IBaseField {
+  id: string;
+  type: string;
 }
 
-export interface IScreen extends IView {
-  type: ViewType.SCREEN;
-  title?: string;
-  screenName: string;
-  items: IItem[];
-  containerStyle?: FlexViewStyle;
+interface ITextField extends IBaseField {
+  type: "text_field";
+}
+
+interface IButton extends IBaseField {
+  type: "button";
+}
+
+type ViewItem = ITextField | IButton;
+
+export interface IFormView extends IBaseView {
+  type: ViewType.FORM;
+  viewItems: ViewItem[];
+}
+
+export type IView = IFormView;
+
+export interface IScreen {
+  screeName: string;
+  views: IView[];
+}
+
+export interface IScreenSource extends ISource {
+  screen?: IScreen;
+}
+export interface IViewSource extends ISource {
+  view?: IView;
 }

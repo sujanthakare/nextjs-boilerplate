@@ -1,6 +1,6 @@
-export interface DomainResponse {
+export interface DomainResponse<T = {}> {
   status: number;
-  data?: any;
+  data?: T;
 }
 
 export interface IHandlerInputs<T = {}> {
