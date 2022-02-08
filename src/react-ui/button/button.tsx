@@ -15,7 +15,7 @@ const Button: React.FC<IButtonProps> = ({
   href,
 }) => {
   return (
-    <MuiButton variant={variant} color={color} href={href}>
+    <MuiButton variant={variant} color={color} href={href} fullWidth>
       {title}
     </MuiButton>
   );

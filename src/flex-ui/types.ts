@@ -6,10 +6,28 @@ export interface ISource {
     url: string;
   };
 }
+
+type GridStyles = {
+  flexDirection?: FlexViewStyle["flexDirection"];
+  spacing?: number;
+  justifyContent?: FlexViewStyle["justifyContent"];
+  alignItems?: FlexViewStyle["alignItems"];
+  height?: FlexViewStyle["height"];
+  maxHeight?: FlexViewStyle["maxHeight"];
+  maxWidth?: FlexViewStyle["maxWidth"];
+  width?: FlexViewStyle["width"];
+};
+
+type ContainerStyles = {
+  height?: string | number;
+  maxWidth?: "xs";
+};
+
 export interface IBaseView {
   id: string;
   type: ViewType;
-  viewStyle?: FlexViewStyle;
+  gridStyles?: GridStyles;
+  containerStyles?: ContainerStyles;
 }
 
 export enum ViewType {
@@ -17,24 +35,32 @@ export enum ViewType {
   SEARCH = "SEARCH",
 }
 
-interface IBaseField {
+interface IBaseViewItem {
   id: string;
   type: string;
 }
 
-interface ITextField extends IBaseField {
+export interface ITextField extends IBaseViewItem {
   type: "text_field";
+  name: string;
+  label: string;
+  placeholder?: string;
+  value?: string;
+  inputType?: string;
 }
 
-interface IButton extends IBaseField {
+export interface IButton extends IBaseViewItem {
   type: "button";
+  text: string;
+  href?: string;
+  color?: string;
 }
 
-type ViewItem = ITextField | IButton;
+export type IViewItem = ITextField | IButton;
 
 export interface IFormView extends IBaseView {
   type: ViewType.FORM;
-  viewItems: ViewItem[];
+  viewItems: IViewItem[];
 }
 
 export type IView = IFormView;
@@ -42,6 +68,8 @@ export type IView = IFormView;
 export interface IScreen {
   screeName: string;
   views: IView[];
+  gridStyles?: GridStyles;
+  containerStyles?: ContainerStyles;
 }
 
 export interface IScreenSource extends ISource {
