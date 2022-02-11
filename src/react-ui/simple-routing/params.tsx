@@ -1,14 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 
-interface IParamsContext {
-  params: Record<string, string>;
-}
-
-const ParamsContext = React.createContext({} as IParamsContext);
-
 interface IProps {
-  params: Record<string, string>;
+  params?: Record<string, any> | null;
 }
+
+const ParamsContext = React.createContext({} as IProps);
 
 export const ParamsContextProvider: React.FC<IProps> = ({
   params: incomingParams,

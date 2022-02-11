@@ -29,7 +29,7 @@ const NotFound = () => {
 
 const SPARoot = () => {
   const router = useRouter();
-  const { asPath, query } = router;
+  const { asPath } = router;
 
   if (asPath === "/[...routes]") {
     return null;

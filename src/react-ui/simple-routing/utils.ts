@@ -1,21 +1,27 @@
 export default function makeMatcher(makeRegexpFn = pathToRegexp) {
-  let cache: any = {};
+  let cache: Record<
+    string,
+    {
+      keys: { name: string }[];
+      regexp: RegExp;
+    }
+  > = {};
 
   // obtains a cached regexp version of the pattern
   const getRegexp = (pattern: string) =>
     cache[pattern] || (cache[pattern] = makeRegexpFn(pattern));
 
-  return (pattern: string, path: string) => {
+  return (pattern: string, path: string): [boolean, Record<string, any>] => {
     const { regexp, keys } = getRegexp(pattern || "");
     const out = regexp.exec(path);
 
-    if (!out) return [false, null];
+    if (!out) return [false, {}];
 
     // formats an object with matched params
-    const params = keys.reduce((params: any, key: any, i: any) => {
+    const params = keys.reduce((params, key, i) => {
       params[key.name] = out[i + 1];
       return params;
-    }, {});
+    }, {} as Record<string, any>);
 
     return [true, params];
   };
