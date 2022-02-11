@@ -1,21 +1,18 @@
-import React, { ButtonHTMLAttributes } from "react";
+import React from "react";
 import MuiButton, { ButtonProps } from "@mui/material/Button";
 
-export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface IButtonProps extends ButtonProps {
   title: string;
-  variant?: ButtonProps["variant"];
-  color?: ButtonProps["color"];
-  href?: ButtonProps["href"];
 }
 
 const Button: React.FC<IButtonProps> = ({
   title,
   variant = "contained",
   color,
-  href,
+  ...rest
 }) => {
   return (
-    <MuiButton variant={variant} color={color} href={href} fullWidth>
+    <MuiButton variant={variant} color={color} fullWidth {...rest}>
       {title}
     </MuiButton>
   );

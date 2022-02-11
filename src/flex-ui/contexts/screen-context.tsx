@@ -18,17 +18,23 @@ const ScreenContextProvider: React.FC<IProps> = ({
   const [screen, setScreen] = useState<IScreen>();
 
   useEffect(() => {
+    const abortController = new AbortController();
+
     if (screenSource.screen) {
       setScreen(screenSource.screen);
     } else if (screenSource.serverConfig) {
       const { method, url } = screenSource.serverConfig;
 
-      fetch(url, { method })
+      fetch(url, { method, signal: abortController.signal })
         .then((res) => res.json())
         .then((data) => {
           setScreen(data);
         });
     }
+
+    return () => {
+      abortController.abort();
+    };
   }, [screenSource]);
 
   return (

@@ -49,11 +49,17 @@ export interface ITextField extends IBaseViewItem {
   inputType?: string;
 }
 
+export type Action = {
+  type: "navigate";
+  location: string;
+};
+
 export interface IButton extends IBaseViewItem {
   type: "button";
   text: string;
   href?: string;
   color?: string;
+  action?: Action;
 }
 
 export type IViewItem = ITextField | IButton;

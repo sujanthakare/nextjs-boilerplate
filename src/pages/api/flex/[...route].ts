@@ -1,4 +1,4 @@
 import { createHandler } from "@/api";
-import ViewController from "@/api/flex/view-controller";
+import FlexController from "@/api/flex/flex-controller";
 
-export default createHandler(new ViewController());
+export default createHandler(new FlexController());

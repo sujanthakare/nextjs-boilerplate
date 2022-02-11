@@ -1,6 +1,6 @@
 import { IScreen, ViewType } from "@/flex-ui/types";
 
-const buildLoginScreen = async (): Promise<IScreen> => {
+const buildStartScreen = async (): Promise<IScreen> => {
   return {
     screeName: "Login",
     views: [
@@ -21,29 +21,11 @@ const buildLoginScreen = async (): Promise<IScreen> => {
             label: "Username",
             name: "username",
           },
-          {
-            id: "password",
-            type: "text_field",
-            label: "Password",
-            name: "password",
-            inputType: "password",
-          },
-          {
-            id: "confirm-password",
-            type: "text_field",
-            label: "Confirm Password",
-            name: "confirmPassword",
-            inputType: "password",
-          },
+
           {
             id: "submit-button",
             type: "button",
-            text: "Login",
-            color: "error",
-            action: {
-              type: "navigate",
-              location: "/start",
-            },
+            text: "Start payment",
           },
         ],
       },
@@ -51,4 +33,4 @@ const buildLoginScreen = async (): Promise<IScreen> => {
   };
 };
 
-export default buildLoginScreen;
+export default buildStartScreen;
