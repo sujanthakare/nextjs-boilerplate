@@ -29,6 +29,11 @@ const ScreenContextProvider: React.FC<IProps> = ({
         .then((res) => res.json())
         .then((data) => {
           setScreen(data);
+        })
+        .catch((e) => {
+          if (e.name === "AbortError") {
+            console.log("REQUEST ABORTED");
+          }
         });
     }
 

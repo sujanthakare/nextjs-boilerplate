@@ -1,6 +1,7 @@
 import React from "react";
-import Screen from "@/flex-ui/components/screen";
 import dynamic from "next/dynamic";
+import Screen from "@/flex-ui/components/screen";
+import { useParams } from "@/react-ui/simple-routing/params";
 import { CircularProgress } from "@mui/material";
 
 const ScreenContextProvider = dynamic(
@@ -8,13 +9,16 @@ const ScreenContextProvider = dynamic(
   { loading: () => <CircularProgress /> }
 );
 
-const Login = () => {
+const Home = () => {
+  const params = useParams();
+  console.log(params);
+
   return (
     <ScreenContextProvider
       screenSource={{
         serverConfig: {
           method: "GET",
-          url: "/api/flex/login",
+          url: "/api/flex/start",
         },
       }}
     >
@@ -23,4 +27,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Home;

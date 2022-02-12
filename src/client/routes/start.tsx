@@ -1,7 +1,14 @@
 import React from "react";
 import Screen from "@/flex-ui/components/screen";
-import ScreenContextProvider from "@/flex-ui/contexts/screen-context";
+
 import { useParams } from "@/react-ui/simple-routing/params";
+import dynamic from "next/dynamic";
+import { CircularProgress } from "@mui/material";
+
+const ScreenContextProvider = dynamic(
+  () => import("@/flex-ui/contexts/screen-context"),
+  { loading: () => <CircularProgress /> }
+);
 
 const Start = () => {
   const params = useParams();
