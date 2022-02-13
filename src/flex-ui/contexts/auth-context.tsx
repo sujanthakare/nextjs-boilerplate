@@ -9,27 +9,11 @@ export const AuthContextProvider: React.FC = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    console.log("WATCH THIS");
-
     setTimeout(() => {
       // router.push("/login");
+      setLoading(false);
     }, 1000);
-  }, [router]);
-
-  if (loading) {
-    return (
-      <div
-        css={{
-          minHeight: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <CircularProgress />
-      </div>
-    );
-  }
+  }, []);
 
   return <AuthContext.Provider value={{}}>{children}</AuthContext.Provider>;
 };

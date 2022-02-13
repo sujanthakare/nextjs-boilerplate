@@ -3,19 +3,20 @@ import { FormViewContext } from "@/flex-ui/contexts/form-view-context";
 import ViewItem from "./view-items";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
+import { css } from "@mui/material";
 
 const FormView = () => {
-  const formViewContext = useContext(FormViewContext);
+  const { view } = useContext(FormViewContext);
 
-  if (!formViewContext.view) {
+  if (!view) {
     return null;
   }
 
   return (
-    <Container {...formViewContext.view.containerStyles}>
+    <Container maxWidth={view.maxWidth || "sm"} css={css(view.containerStyles)}>
       <form>
-        <Grid container {...formViewContext.view.gridStyles}>
-          {formViewContext.view.viewItems.map((viewItem) => (
+        <Grid container {...view.gridStyles}>
+          {view.viewItems.map((viewItem) => (
             <Grid item key={viewItem.id}>
               <ViewItem data={viewItem} />
             </Grid>

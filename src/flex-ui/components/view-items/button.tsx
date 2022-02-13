@@ -16,12 +16,16 @@ const Button = ({ data }: IProps) => {
       type="submit"
       href={href}
       title={text}
-      onClick={(e) => {
-        e.preventDefault();
-        if (data.action) {
-          router.push(data.action.location);
-        }
-      }}
+      {...(href
+        ? {}
+        : {
+            onClick: (e) => {
+              e.preventDefault();
+              if (data.action) {
+                router.push(data.action.location);
+              }
+            },
+          })}
     />
   );
 };

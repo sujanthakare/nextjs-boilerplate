@@ -27,6 +27,17 @@ const theme = createTheme({
   },
 
   components: {
+    MuiIcon: {
+      styleOverrides: {
+        root: {
+          height: "1.1em",
+          width: "1em",
+        },
+      },
+      defaultProps: {
+        baseClassName: "fi",
+      },
+    },
     MuiCssBaseline: {
       styleOverrides: `
         @font-face {

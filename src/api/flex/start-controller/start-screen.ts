@@ -1,36 +1,71 @@
-import { IScreen, ViewType } from "@/flex-ui/types";
+import { IScreen, IScreenHeader, ViewType } from "@/flex-ui/types";
 
 const buildStartScreen = async (): Promise<IScreen> => {
-  return {
-    screeName: "Login",
+  const header: IScreenHeader = {
+    title: "Mega Mall",
+    rightArea: {
+      id: "header-right-area",
+      type: ViewType.SIMPLE,
+      gridStyles: {
+        flexDirection: "row",
+        justifyContent: "flex-end",
+        spacing: 1,
+      },
+      viewItems: [
+        {
+          type: "icon_button",
+          id: "notifications",
+          name: "fi-rr-bell",
+          action: {
+            location: "/login",
+            type: "navigate",
+          },
+        },
+        {
+          type: "icon_button",
+          id: "shopping-cart",
+          name: "fi-rr-shopping-cart",
+          action: {
+            location: "/login",
+            type: "navigate",
+          },
+        },
+      ],
+    },
+  };
+
+  const screen: IScreen = {
+    id: "start-screen",
+    type: "SCREEN",
+    name: "START_SCREEN",
+    enableGutters: true,
+    gridStyles: { flexDirection: "column" },
+    header,
     views: [
       {
-        id: "login-form",
-        type: ViewType.FORM,
-        containerStyles: { maxWidth: "xs" },
+        id: "search-view",
+        type: ViewType.SIMPLE,
+        maxWidth: "md",
         gridStyles: {
-          flexDirection: "column",
           justifyContent: "center",
-          height: "100vh",
+          flexDirection: "row",
+          margin: 1,
           spacing: 2,
         },
+
         viewItems: [
           {
-            id: "username",
             type: "text_field",
-            label: "Username",
-            name: "username",
-          },
-
-          {
-            id: "submit-button",
-            type: "button",
-            text: "Start payment",
+            id: "search-field",
+            name: "search",
+            placeholder: "Search product name",
           },
         ],
       },
     ],
   };
+
+  return screen;
 };
 
 export default buildStartScreen;

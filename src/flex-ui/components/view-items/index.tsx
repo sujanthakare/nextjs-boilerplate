@@ -1,15 +1,19 @@
-import { IViewItem } from "@/flex-ui/types";
+import { IViewItem, ViewItemType } from "@/flex-ui/types";
 import Button from "./button";
+import IconButton from "./icon-button";
+import Text from "./text";
 import TextField from "./text-field";
-
-const ComponentMap = {
-  text_field: TextField,
-  button: Button,
-};
 
 interface IProps {
   data: IViewItem;
 }
+
+const ComponentMap: Record<ViewItemType, (props: any) => JSX.Element | null> = {
+  text_field: TextField,
+  button: Button,
+  text: Text,
+  icon_button: IconButton,
+};
 
 const ViewItem = ({ data }: IProps) => {
   const { type } = data;

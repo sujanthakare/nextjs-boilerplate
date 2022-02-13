@@ -1,3 +1,4 @@
+import { CSSObject } from "@emotion/react";
 import { FlexViewStyle } from "./flex-styles";
 
 export interface ISource {
@@ -16,24 +17,17 @@ type GridStyles = {
   maxHeight?: FlexViewStyle["maxHeight"];
   maxWidth?: FlexViewStyle["maxWidth"];
   width?: FlexViewStyle["width"];
+  margin?: number;
 };
 
-type ContainerStyles = {
-  height?: string | number;
-  maxWidth?: "xs";
-};
+type ContainerStyles = FlexViewStyle & {};
 
-export interface IBaseView {
-  id: string;
-  type: ViewType;
-  gridStyles?: GridStyles;
-  containerStyles?: ContainerStyles;
-}
+/**
+ *
+ * VIEW_ITEMS
+ */
 
-export enum ViewType {
-  FORM = "FORM",
-  SEARCH = "SEARCH",
-}
+export type ViewItemType = "button" | "text_field" | "text" | "icon_button";
 
 interface IBaseViewItem {
   id: string;
@@ -43,7 +37,7 @@ interface IBaseViewItem {
 export interface ITextField extends IBaseViewItem {
   type: "text_field";
   name: string;
-  label: string;
+  label?: string;
   placeholder?: string;
   value?: string;
   inputType?: string;
@@ -62,20 +56,63 @@ export interface IButton extends IBaseViewItem {
   action?: Action;
 }
 
-export type IViewItem = ITextField | IButton;
+export interface IIconButton extends IBaseViewItem {
+  type: "icon_button";
+  name: string;
+  color?: string;
+  action?: Action;
+}
+
+export type TextVariant = "header" | "para" | "markdown";
+export interface IText extends IBaseViewItem {
+  type: "text";
+  text: string;
+  variant: TextVariant;
+}
+
+export type IViewItem = ITextField | IButton | IText | IIconButton;
+
+export interface IDisplayConfig {
+  id: string;
+  type: string;
+  gridStyles?: GridStyles;
+  containerStyles?: CSSObject;
+  enableGutters?: boolean;
+  maxWidth?: "xs" | "sm" | "md" | "lg" | "xl";
+}
+
+export enum ViewType {
+  FORM = "FORM",
+  SIMPLE = "SIMPLE",
+  SEARCH = "SEARCH",
+}
+
+interface IBaseView extends IDisplayConfig {
+  type: ViewType;
+}
 
 export interface IFormView extends IBaseView {
   type: ViewType.FORM;
   viewItems: IViewItem[];
 }
 
-export type IView = IFormView;
+export interface ISimpleView extends IBaseView {
+  type: ViewType.SIMPLE;
+  viewItems: IViewItem[];
+}
 
-export interface IScreen {
-  screeName: string;
+export type IView = IFormView | ISimpleView;
+
+export interface IScreenHeader {
+  title: string;
+  rightArea?: IView;
+  leftArea?: IView;
+}
+export interface IScreen extends IDisplayConfig {
+  type: "SCREEN";
+  name: string;
+  header?: IScreenHeader;
   views: IView[];
-  gridStyles?: GridStyles;
-  containerStyles?: ContainerStyles;
 }
 
 export interface IScreenSource extends ISource {

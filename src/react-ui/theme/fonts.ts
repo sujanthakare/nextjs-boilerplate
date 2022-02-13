@@ -1,6 +1,6 @@
-export const defaultFontFamily = "Open Sans";
+export const defaultFontFamily = "DM Sans";
 
-const fontFolder = "OpenSans";
+const fontFolder = "DMSans";
 export const fontSource = {
   REGULAR: `/fonts/${fontFolder}/Regular.ttf`,
   MEDIUM: `/fonts/${fontFolder}/Medium.ttf`,

@@ -4,8 +4,7 @@ import dynamic from "next/dynamic";
 import { CircularProgress } from "@mui/material";
 
 const ScreenContextProvider = dynamic(
-  () => import("@/flex-ui/contexts/screen-context"),
-  { loading: () => <CircularProgress /> }
+  () => import("@/flex-ui/contexts/screen-context")
 );
 
 const Login = () => {

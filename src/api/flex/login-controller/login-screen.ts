@@ -2,7 +2,7 @@ import { IScreen, ViewType } from "@/flex-ui/types";
 
 const buildLoginScreen = async (): Promise<IScreen> => {
   return {
-    screeName: "Login",
+    id: "login-screen",
     views: [
       {
         id: "login-form",

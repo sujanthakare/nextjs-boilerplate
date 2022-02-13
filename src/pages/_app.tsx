@@ -1,36 +1,42 @@
-import React, { useEffect } from "react";
+import React from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { CircularProgress } from "@mui/material";
+import { Container } from "@mui/material";
+import { ThemeContextProvider } from "@/react-ui/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [isLoaded, setIsLoaded] = React.useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
-  if (!isLoaded) {
-    return (
-      <div
-        css={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <CircularProgress />
-      </div>
-    );
-  }
-
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+          rel="stylesheet"
+          href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css"
+        />
       </Head>
-      <Component {...pageProps} />
+      <div
+        css={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          backgroundColor: "#E5E5E5",
+        }}
+      >
+        <Container
+          maxWidth="lg"
+          disableGutters
+          css={{
+            maxHeight: "100vh",
+            height: 1400,
+            backgroundColor: "white",
+          }}
+        >
+          <ThemeContextProvider>
+            <Component {...pageProps} />
+          </ThemeContextProvider>
+        </Container>
+      </div>
     </>
   );
 }
