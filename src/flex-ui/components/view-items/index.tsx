@@ -3,6 +3,7 @@ import Button from "./button";
 import IconButton from "./icon-button";
 import Text from "./text";
 import TextField from "./text-field";
+import Row from "./row";
 
 interface IProps {
   data: IViewItem;
@@ -13,6 +14,7 @@ const ComponentMap: Record<ViewItemType, (props: any) => JSX.Element | null> = {
   button: Button,
   text: Text,
   icon_button: IconButton,
+  row: Row,
 };
 
 const ViewItem = ({ data }: IProps) => {

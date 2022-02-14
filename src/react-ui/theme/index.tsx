@@ -23,7 +23,7 @@ const theme = createTheme({
       fontWeight: 600,
       letterSpacing: 1,
     },
-    fontSize: 10,
+    fontSize: 13,
   },
 
   components: {

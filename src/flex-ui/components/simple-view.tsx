@@ -13,7 +13,7 @@ const SimpleView = () => {
   return (
     <Grid container {...view.gridStyles}>
       {view.viewItems.map((viewItem) => (
-        <Grid item key={viewItem.id}>
+        <Grid item key={viewItem.id} sm={viewItem.flexSize}>
           <ViewItem data={viewItem} />
         </Grid>
       ))}

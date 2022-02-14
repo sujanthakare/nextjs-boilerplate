@@ -27,11 +27,21 @@ type ContainerStyles = FlexViewStyle & {};
  * VIEW_ITEMS
  */
 
-export type ViewItemType = "button" | "text_field" | "text" | "icon_button";
+export type ViewItemType =
+  | "button"
+  | "text_field"
+  | "text"
+  | "icon_button"
+  | "row";
 
 interface IBaseViewItem {
   id: string;
   type: string;
+  flexSize?: 2 | 6 | 8 | 16;
+}
+
+export interface IRow extends IBaseViewItem {
+  type: "row";
 }
 
 export interface ITextField extends IBaseViewItem {
@@ -70,7 +80,7 @@ export interface IText extends IBaseViewItem {
   variant: TextVariant;
 }
 
-export type IViewItem = ITextField | IButton | IText | IIconButton;
+export type IViewItem = ITextField | IButton | IText | IIconButton | IRow;
 
 export interface IDisplayConfig {
   id: string;

@@ -46,19 +46,26 @@ const buildStartScreen = async (): Promise<IScreen> => {
         id: "search-view",
         type: ViewType.SIMPLE,
         maxWidth: "md",
-        gridStyles: {
-          justifyContent: "center",
-          flexDirection: "row",
-          margin: 1,
-          spacing: 2,
-        },
-
+        gridStyles: { justifyContent: "center" },
         viewItems: [
           {
             type: "text_field",
             id: "search-field",
             name: "search",
             placeholder: "Search product name",
+            flexSize: 8,
+          },
+        ],
+      },
+      {
+        id: "banners",
+        type: ViewType.SIMPLE,
+        maxWidth: "md",
+        gridStyles: { flexDirection: "column" },
+        viewItems: [
+          {
+            type: "row",
+            id: "banners-field",
           },
         ],
       },
