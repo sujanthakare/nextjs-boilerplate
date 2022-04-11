@@ -1,15 +1,15 @@
-import React from "react";
-import { Box, Container, Icon, Typography, useTheme } from "@mui/material";
+import React, { useContext } from "react";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { boxShadows } from "@/react-ui/theme/effects";
-import { IScreen } from "../types";
-import View from "./view";
+import { ScreenContext } from "../contexts/screen-context";
+import ViewItemComponent from "./view-items/view-item-component";
 
-interface IProps {
-  data?: IScreen["header"];
-}
+const ScreenHeader = () => {
+  const { screen } = useContext(ScreenContext);
 
-const ScreenHeader = ({ data }: IProps) => {
-  const { palette } = useTheme();
+  if (!screen?.header) {
+    return null;
+  }
 
   return (
     <Container
@@ -20,24 +20,43 @@ const ScreenHeader = ({ data }: IProps) => {
         alignItems: "center",
       }}
     >
-      <Box css={{ flex: 3 }}>
-        <View view={data?.leftArea} />
-      </Box>
+      <Grid
+        container
+        flex={3}
+        flexDirection="row"
+        justifyContent="flex-start"
+        spacing={1}
+      >
+        {screen?.header?.leftViewItems?.map((itemData) => {
+          return (
+            <Grid key={itemData.id} item>
+              <ViewItemComponent data={itemData} />
+            </Grid>
+          );
+        })}
+      </Grid>
 
       <Box css={{ flex: 2, justifyContent: "center", display: "flex" }}>
-        <Typography
-          variant="h5"
-          component="header"
-          fontWeight={700}
-          color={palette.primary.main}
-        >
-          {data?.title}
+        <Typography variant="h5" component="header" fontWeight={700}>
+          {screen?.header?.title}
         </Typography>
       </Box>
 
-      <Box css={{ flex: 3 }}>
-        <View view={data?.rightArea} />
-      </Box>
+      <Grid
+        container
+        flex={3}
+        flexDirection="row"
+        justifyContent="flex-end"
+        spacing={1}
+      >
+        {screen?.header?.rightViewItems?.map((itemData) => {
+          return (
+            <Grid key={itemData.id} item>
+              <ViewItemComponent data={itemData} />
+            </Grid>
+          );
+        })}
+      </Grid>
     </Container>
   );
 };

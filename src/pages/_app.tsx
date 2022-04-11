@@ -1,8 +1,9 @@
 import React from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { Container } from "@mui/material";
+
 import { ThemeContextProvider } from "@/react-ui/theme";
+import AppLayout from "@/react-ui/app-layout";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -14,29 +15,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css"
         />
       </Head>
-      <div
-        css={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-          backgroundColor: "#E5E5E5",
-        }}
-      >
-        <Container
-          maxWidth="lg"
-          disableGutters
-          css={{
-            maxHeight: "100vh",
-            height: 1400,
-            backgroundColor: "white",
-          }}
-        >
-          <ThemeContextProvider>
-            <Component {...pageProps} />
-          </ThemeContextProvider>
-        </Container>
-      </div>
+
+      <AppLayout>
+        <ThemeContextProvider>
+          <Component {...pageProps} />
+        </ThemeContextProvider>
+      </AppLayout>
     </>
   );
 }

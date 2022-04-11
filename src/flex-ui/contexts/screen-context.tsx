@@ -22,8 +22,8 @@ const ScreenContextProvider: React.FC<IProps> = ({
 
     if (screenSource.screen) {
       setScreen(screenSource.screen);
-    } else if (screenSource.serverConfig) {
-      const { method, url } = screenSource.serverConfig;
+    } else if (screenSource.dataConfig) {
+      const { method, url } = screenSource.dataConfig;
 
       fetch(url, { method, signal: abortController.signal })
         .then((res) => res.json())

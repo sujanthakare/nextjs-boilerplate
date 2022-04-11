@@ -1,5 +1,4 @@
 import BaseApiController from "@/api/base-api-controller";
-import { GET } from "@/api/decorators";
 import { DomainResponse } from "@/api/types";
 import { IScreen } from "@/flex-ui/types";
 import buildLoginScreen from "./login-screen";

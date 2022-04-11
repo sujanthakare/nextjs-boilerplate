@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <ScreenContextProvider
       screenSource={{
-        serverConfig: {
+        dataConfig: {
           method: "GET",
           url: "/api/flex/start",
         },

@@ -23,7 +23,7 @@ const theme = createTheme({
       fontWeight: 600,
       letterSpacing: 1,
     },
-    fontSize: 13,
+    fontSize: 14,
   },
 
   components: {
@@ -32,6 +32,9 @@ const theme = createTheme({
         root: {
           height: "1.1em",
           width: "1em",
+          ":before": {
+            lineHeight: "1.1em",
+          },
         },
       },
       defaultProps: {

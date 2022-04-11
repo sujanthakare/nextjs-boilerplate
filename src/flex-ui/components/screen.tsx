@@ -2,9 +2,8 @@ import React from "react";
 import { useContext } from "react";
 import { ScreenContext } from "@/flex-ui/contexts/screen-context";
 import dynamic from "next/dynamic";
-import Container from "@mui/material/Container";
-import { css, Grid } from "@mui/material";
 import ScreenHeader from "./screen-header";
+import { Box } from "@mui/material";
 
 const View = dynamic(() => import("@/flex-ui/components/view"));
 
@@ -17,19 +16,10 @@ const Screen = () => {
 
   return (
     <>
-      <ScreenHeader data={screen.header} />
-
-      <Container
-        maxWidth={screen.maxWidth}
-        disableGutters={!screen.enableGutters}
-        css={css(screen.containerStyles, { marginTop: 16 })}
-      >
-        <Grid container {...screen.gridStyles}>
-          {screen.views.map((view) => (
-            <View key={view.id} view={view} />
-          ))}
-        </Grid>
-      </Container>
+      <ScreenHeader />
+      <Box sx={{ marginTop: 2 }}>
+        <View view={screen.view} />
+      </Box>
     </>
   );
 };

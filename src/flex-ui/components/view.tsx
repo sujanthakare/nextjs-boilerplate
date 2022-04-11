@@ -1,10 +1,7 @@
-import { FormViewContextProvider } from "@/flex-ui/contexts/form-view-context";
 import { IView, ViewType } from "@/flex-ui/types";
-import { Container, css } from "@mui/material";
 import { motion } from "framer-motion";
-import { SimpleViewContextProvider } from "../contexts/simple-view-context";
-import FormView from "./form-view";
-import SimpleView from "./simple-view";
+import { ViewContextProvider } from "../contexts/view-context";
+import FluentView from "./fluent-view";
 
 interface IProps {
   view?: IView;
@@ -17,18 +14,11 @@ const View = ({ view }: IProps) => {
 
   const renderView = () => {
     switch (view.type) {
-      case ViewType.FORM:
+      case ViewType.FLUENT:
         return (
-          <FormViewContextProvider viewSource={{ view }}>
-            <FormView />
-          </FormViewContextProvider>
-        );
-
-      case ViewType.SIMPLE:
-        return (
-          <SimpleViewContextProvider viewSource={{ view }}>
-            <SimpleView />
-          </SimpleViewContextProvider>
+          <ViewContextProvider viewSource={{ view }}>
+            <FluentView />
+          </ViewContextProvider>
         );
       default:
         return null;
@@ -37,13 +27,7 @@ const View = ({ view }: IProps) => {
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} key={view.id}>
-      <Container
-        disableGutters={!view.enableGutters}
-        maxWidth={view.maxWidth || "sm"}
-        css={css(view.containerStyles)}
-      >
-        {renderView()}
-      </Container>
+      {renderView()}
     </motion.div>
   );
 };

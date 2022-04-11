@@ -1,4 +1,4 @@
-import { IButton, IIconButton } from "@/flex-ui/types";
+import { IIconButton } from "@/flex-ui/types";
 import { css, Icon, useTheme } from "@mui/material";
 import MuiIconButton from "@mui/material/IconButton";
 
@@ -24,7 +24,7 @@ const IconButton = ({ data }: IProps) => {
     >
       <Icon
         className={data.name}
-        fontSize="medium"
+        fontSize="small"
         css={css({ color: data.color || palette.grey[900] })}
       />
     </MuiIconButton>

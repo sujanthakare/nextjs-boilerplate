@@ -1,5 +1,7 @@
-import SPARoot from "@/client/spa-root";
 import type { NextPage } from "next";
+import dynamic from "next/dynamic";
+
+const SPARoot = dynamic(() => import("@/client/spa-root"));
 
 const Root: NextPage = () => {
   return <SPARoot />;

@@ -1,36 +1,28 @@
-// import { IView, IViewSource } from "@/flex-ui/types";
-// import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import useViewData from "../hooks/useViewData";
+import { IView, IViewSource } from "../types";
 
-// export interface IViewContext {
-//   view?: IView;
-// }
+export interface IViewContext {
+  view?: IView;
+}
 
-// export const ViewContext = React.createContext({} as IViewContext);
+export const ViewContext = React.createContext({} as IViewContext);
 
-// interface IProps {
-//   viewSource: IViewSource;
-// }
+interface IProps {
+  viewSource: IViewSource;
+}
 
-// export const ViewContextProvider: React.FC<IProps> = ({
-//   children,
-//   viewSource,
-// }) => {
-//   const [view, setView] = useState<IView>();
+export const ViewContextProvider: React.FC<IProps> = ({
+  children,
+  viewSource,
+}) => {
+  const { view, loadView } = useViewData<IView>(viewSource);
 
-//   useEffect(() => {
-//     if (viewSource.view) {
-//       setView(viewSource.view);
-//     } else if (viewSource.serverConfig) {
-//       const { method, url } = viewSource.serverConfig;
-//       fetch(url, { method })
-//         .then((res) => res.json())
-//         .then((data) => {
-//           setView(data);
-//         });
-//     }
-//   }, [viewSource]);
+  useEffect(() => {
+    loadView();
+  }, [loadView]);
 
-//   return (
-//     <ViewContext.Provider value={{ view }}>{children}</ViewContext.Provider>
-//   );
-// };
+  return (
+    <ViewContext.Provider value={{ view }}>{children}</ViewContext.Provider>
+  );
+};

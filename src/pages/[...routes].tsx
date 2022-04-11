@@ -1,4 +1,4 @@
-import type { NextPage, NextPageContext } from "next";
+import type { NextPage } from "next";
 import dynamic from "next/dynamic";
 
 const SPARoot = dynamic(() => import("@/client/spa-root"));

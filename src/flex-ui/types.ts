@@ -1,26 +1,23 @@
-import { CSSObject } from "@emotion/react";
 import { FlexViewStyle } from "./flex-styles";
 
 export interface ISource {
-  serverConfig?: {
+  dataConfig?: {
     method: string;
     url: string;
   };
 }
 
-type GridStyles = {
-  flexDirection?: FlexViewStyle["flexDirection"];
-  spacing?: number;
-  justifyContent?: FlexViewStyle["justifyContent"];
-  alignItems?: FlexViewStyle["alignItems"];
-  height?: FlexViewStyle["height"];
-  maxHeight?: FlexViewStyle["maxHeight"];
-  maxWidth?: FlexViewStyle["maxWidth"];
-  width?: FlexViewStyle["width"];
-  margin?: number;
-};
-
-type ContainerStyles = FlexViewStyle & {};
+// type GridStyles = {
+//   flexDirection?: FlexViewStyle["flexDirection"];
+//   spacing?: number;
+//   justifyContent?: FlexViewStyle["justifyContent"];
+//   alignItems?: FlexViewStyle["alignItems"];
+//   height?: FlexViewStyle["height"];
+//   maxHeight?: FlexViewStyle["maxHeight"];
+//   maxWidth?: FlexViewStyle["maxWidth"];
+//   width?: FlexViewStyle["width"];
+//   margin?: number;
+// };
 
 /**
  *
@@ -34,17 +31,7 @@ export type ViewItemType =
   | "icon_button"
   | "row";
 
-interface IBaseViewItem {
-  id: string;
-  type: string;
-  flexSize?: 2 | 6 | 8 | 16;
-}
-
-export interface IRow extends IBaseViewItem {
-  type: "row";
-}
-
-export interface ITextField extends IBaseViewItem {
+export interface ITextField extends IDisplayConfig {
   type: "text_field";
   name: string;
   label?: string;
@@ -58,7 +45,7 @@ export type Action = {
   location: string;
 };
 
-export interface IButton extends IBaseViewItem {
+export interface IButton extends IDisplayConfig {
   type: "button";
   text: string;
   href?: string;
@@ -66,7 +53,7 @@ export interface IButton extends IBaseViewItem {
   action?: Action;
 }
 
-export interface IIconButton extends IBaseViewItem {
+export interface IIconButton extends IDisplayConfig {
   type: "icon_button";
   name: string;
   color?: string;
@@ -74,10 +61,15 @@ export interface IIconButton extends IBaseViewItem {
 }
 
 export type TextVariant = "header" | "para" | "markdown";
-export interface IText extends IBaseViewItem {
+export interface IText extends IDisplayConfig {
   type: "text";
   text: string;
   variant: TextVariant;
+}
+
+export interface IRow extends IDisplayConfig {
+  type: "row";
+  items: IViewItem[];
 }
 
 export type IViewItem = ITextField | IButton | IText | IIconButton | IRow;
@@ -85,44 +77,31 @@ export type IViewItem = ITextField | IButton | IText | IIconButton | IRow;
 export interface IDisplayConfig {
   id: string;
   type: string;
-  gridStyles?: GridStyles;
-  containerStyles?: CSSObject;
-  enableGutters?: boolean;
+  // gridStyles?: GridStyles;
+  // containerStyles?: CSSObject;
+  // enableGutters?: boolean;
   maxWidth?: "xs" | "sm" | "md" | "lg" | "xl";
 }
 
 export enum ViewType {
-  FORM = "FORM",
-  SIMPLE = "SIMPLE",
-  SEARCH = "SEARCH",
+  FLUENT = "FLUENT",
 }
 
-interface IBaseView extends IDisplayConfig {
+export interface IView extends IDisplayConfig {
   type: ViewType;
-}
-
-export interface IFormView extends IBaseView {
-  type: ViewType.FORM;
   viewItems: IViewItem[];
 }
-
-export interface ISimpleView extends IBaseView {
-  type: ViewType.SIMPLE;
-  viewItems: IViewItem[];
-}
-
-export type IView = IFormView | ISimpleView;
 
 export interface IScreenHeader {
   title: string;
-  rightArea?: IView;
-  leftArea?: IView;
+  rightViewItems?: IViewItem[];
+  leftViewItems?: IViewItem[];
 }
+
 export interface IScreen extends IDisplayConfig {
-  type: "SCREEN";
-  name: string;
+  name: string; // LOGIN | HOME
   header?: IScreenHeader;
-  views: IView[];
+  view: IView;
 }
 
 export interface IScreenSource extends ISource {
